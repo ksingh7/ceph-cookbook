@@ -1,6 +1,6 @@
 Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
-BOX='jayunit100/centos7'
+BOX='centos-standard'
 BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
 
 ceph_node1= 'ceph-node1'
