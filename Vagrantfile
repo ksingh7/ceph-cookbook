@@ -1,8 +1,7 @@
 Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
-#
 BOX='jayunit100/centos7'
-BOX_URL='https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box'
+BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
 
 ceph_node1= 'ceph-node1'
 ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi' 
@@ -25,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                  config.vm.define :"ceph-node1" do |node1|
                         node1.vm.box = BOX
-                      #  node1.vm.box_url = BOX_URL
+                        node1.vm.box_url = BOX_URL
                         node1.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "1024"]
