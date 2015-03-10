@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                  config.vm.define :"ceph-node1" do |node1|
                         node1.vm.box = BOX
-               #         node1.vm.box_url = BOX_URL
+                        node1.vm.box_url = BOX_URL
                         node1.vm.network :private_network, ip: "192.168.1.101"
                         node1.vm.hostname = ceph_node1
                         node1.vm.synced_folder ".", "/vagrant", disabled: true
@@ -59,7 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
  		config.vm.define :"ceph-node2" do |node2|
                         node2.vm.box = BOX
-               #         node2.vm.box_url = BOX_URL
+                        node2.vm.box_url = BOX_URL
                         node2.vm.network :private_network, ip: "192.168.1.102"
                         node2.vm.hostname = ceph_node2
                         node2.vm.synced_folder ".", "/vagrant", disabled: true
@@ -93,7 +93,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                 config.vm.define :"ceph-node3" do |node3|
                         node3.vm.box = BOX
-               #         node3.vm.box_url = BOX_URL
+                        node3.vm.box_url = BOX_URL
                         node3.vm.network :private_network, ip: "192.168.1.103"
                         node3.vm.hostname = ceph_node3
                         node3.vm.synced_folder ".", "/vagrant", disabled: true
