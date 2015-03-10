@@ -91,7 +91,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ##################################### Configuration for ceph-node3 #####################################################
 
-                config.vm.define :"ceph-noder3" do |node3|
+                config.vm.define :"ceph-node3" do |node3|
                         node3.vm.box = BOX
                #         node3.vm.box_url = BOX_URL
                         node3.vm.network :private_network, ip: "192.168.1.103"
