@@ -20,7 +20,7 @@ ceph_node3_disk4 = './ceph-node3/ceph-node3_disk4.vdi'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-##################################### Configuration for ceph-node1 #####################################################
+#T#################################### Configuration for ceph-node1 #####################################################
 
                  config.vm.define :"ceph-node1" do |node1|
                         node1.vm.box = BOX
