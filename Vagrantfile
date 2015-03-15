@@ -36,17 +36,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				v.gui = true
 
                                 unless File.exist?(ceph_node1_disk2)
-                                v.customize ['createhd', '--filename', ceph_node1_disk2, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node1_disk2, '--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', ceph_node1_disk2]
                                 end
 
                                 unless File.exist?(ceph_node1_disk3)
-                                v.customize ['createhd', '--filename', ceph_node1_disk3, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node1_disk3,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', ceph_node1_disk3]
                                 end
 
                                 unless File.exist?(ceph_node1_disk4)
-                                v.customize ['createhd', '--filename', ceph_node1_disk4, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node1_disk4,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', ceph_node1_disk4]
                                 end
 
@@ -71,17 +71,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				v.gui = true
 
                                 unless File.exist?(ceph_node2_disk2)
-                                v.customize ['createhd', '--filename', ceph_node2_disk2, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node2_disk2,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', ceph_node2_disk2]
                                 end
 
                                 unless File.exist?(ceph_node2_disk3)
-                                v.customize ['createhd', '--filename', ceph_node2_disk3, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node2_disk3,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', ceph_node2_disk3]
                                 end
 
                                 unless File.exist?(ceph_node2_disk4)
-                                v.customize ['createhd', '--filename', ceph_node2_disk4, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node2_disk4,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', ceph_node2_disk4]
                                 end
 
@@ -105,17 +105,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                 v.gui = true
 
                                 unless File.exist?(ceph_node3_disk2)
-                                v.customize ['createhd', '--filename', ceph_node3_disk2, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node3_disk2,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', ceph_node3_disk2]
                                 end
 
                                 unless File.exist?(ceph_node3_disk3)
-                                v.customize ['createhd', '--filename', ceph_node3_disk3, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node3_disk3,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', ceph_node3_disk3]
                                 end
 
                                 unless File.exist?(ceph_node3_disk4)
-                                v.customize ['createhd', '--filename', ceph_node3_disk4, '--variant', 'Fixed', '--size', 1 * 5120]
+                                v.customize ['createhd', '--filename', ceph_node3_disk4,'--size', 1 * 5120]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', ceph_node3_disk4]
                                 end
 
