@@ -1,7 +1,13 @@
 Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
+
 BOX='centos7-standard'
 BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
+
+BOX_OPENSTACK='centos7-openstack'
+BOX_URL_OPENSTACK='https://www.dropbox.com/s/oioyoovr1nzvq3c/centos7-openstack.box?dl=1'
+
+os_host= 'os-node1'
 
 ceph_node1= 'ceph-node1'
 ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi' 
@@ -31,7 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                         node1.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.customize ["modifyvm", :id, "--memory", "750"]
                                 v.name = ceph_node1
 				v.gui = true
 
@@ -66,7 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                         node2.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.customize ["modifyvm", :id, "--memory", "750"]
                                 v.name = ceph_node2
 				v.gui = true
 
@@ -100,7 +106,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                         node3.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.customize ["modifyvm", :id, "--memory", "750"]
                                 v.name = ceph_node3
                                 v.gui = true
 
@@ -123,6 +129,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                 end
 
-##################################### Configuration for ceph-node3 #####################################################
+##################################### Configuration for OpenStack node #####################################################
+
+                 config.vm.define :"openstack-node1" do |os|
+                        os.vm.box = BOX_OPENSTACK
+                        os.vm.box_url = BOX_URL_OPENSTACK
+                        os.vm.network :private_network, ip: "192.168.1.111"
+                        os.vm.hostname = os_host
+                        os.vm.synced_folder ".", "/vagrant", disabled: true
+
+                        os.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "4096"]
+                                v.name = os_host
+                                v.gui = true
+
+                        end
+                  end
+
+###############################################################################################################
 
 end
