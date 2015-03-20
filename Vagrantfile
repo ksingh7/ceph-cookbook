@@ -7,7 +7,10 @@ BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
 BOX_OPENSTACK='centos7-openstack'
 BOX_URL_OPENSTACK='https://www.dropbox.com/s/oioyoovr1nzvq3c/centos7-openstack.box?dl=1'
 
+CLIENT_NODE='ubuntu/trusty64'
+
 os_host= 'os-node1'
+client_host= 'client-node1'
 
 ceph_node1= 'ceph-node1'
 ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi' 
@@ -147,6 +150,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         end
                   end
 
+##################################### Configuration for client node #####################################################
+
+                 config.vm.define :"client-node1" do |os|
+                        os.vm.box = CLIENT_NODE 
+                        #os.vm.box_url = BOX_URL_OPENSTACK
+                        os.vm.network :private_network, ip: "192.168.1.110"
+                        os.vm.hostname = client_host 
+                        os.vm.synced_folder ".", "/vagrant", disabled: true
+
+                        os.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "512"]
+                                v.name = client_host 
+                                v.gui = true
+
+                        end
+                  end
 ###############################################################################################################
 
 end
