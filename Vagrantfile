@@ -37,7 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node1.vm.network :private_network, ip: "192.168.1.101"
                         node1.vm.hostname = ceph_node1
                         node1.vm.synced_folder ".", "/vagrant", disabled: true
-
+			node1.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node1.vm.provision "shell", path: "post-deploy.sh"
                         node1.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "750"]
@@ -72,7 +73,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node2.vm.network :private_network, ip: "192.168.1.102"
                         node2.vm.hostname = ceph_node2
                         node2.vm.synced_folder ".", "/vagrant", disabled: true
-
+			node2.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        nodd2.vm.provision "shell", path: "post-deploy.sh"
                         node2.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "750"]
@@ -106,7 +108,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node3.vm.network :private_network, ip: "192.168.1.103"
                         node3.vm.hostname = ceph_node3
                         node3.vm.synced_folder ".", "/vagrant", disabled: true
-
+			node3.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node3.vm.provision "shell", path: "post-deploy.sh"
                         node3.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "750"]
@@ -140,7 +143,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         os.vm.network :private_network, ip: "192.168.1.111"
                         os.vm.hostname = os_host
                         os.vm.synced_folder ".", "/vagrant", disabled: true
-
+			os.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        os.vm.provision "shell", path: "post-deploy.sh"
                         os.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "4096"]
@@ -158,7 +162,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         os.vm.network :private_network, ip: "192.168.1.110"
                         os.vm.hostname = client_host 
                         os.vm.synced_folder ".", "/vagrant", disabled: true
-
+			os.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+			os.vm.provision "shell", path: "post-deploy.sh"
                         os.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "512"]
