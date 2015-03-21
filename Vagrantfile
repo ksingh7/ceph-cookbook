@@ -74,7 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node2.vm.hostname = ceph_node2
                         node2.vm.synced_folder ".", "/vagrant", disabled: true
 			node2.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
-                        nodd2.vm.provision "shell", path: "post-deploy.sh"
+                        node2.vm.provision "shell", path: "post-deploy.sh"
                         node2.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "750"]
