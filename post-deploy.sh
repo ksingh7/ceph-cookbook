@@ -17,7 +17,6 @@ echo "
 ######################################################
 " >> /etc/hosts
 fi
-fi
 if [ -e /etc/redhat-release ]
 then
 systemctl stop ntpd
