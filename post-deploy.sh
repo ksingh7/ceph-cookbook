@@ -17,3 +17,13 @@ echo "
 ######################################################
 " >> /etc/hosts
 fi
+fi
+if [ -e /etc/redhat-release ]
+then
+systemctl stop ntpd
+systemctl stop ntpdate
+ntpdate 0.centos.pool.ntp.org > /dev/null 2> /dev/null
+systemctl start ntpdate
+systemctl start ntpd
+service ceph restart mon > /dev/null 2> /dev/null
+fi
