@@ -1,5 +1,5 @@
 #!/bin/bash
-value=$( grep -ic "ceph" /etc/hosts )
+value=$( grep -ic "entry" /etc/hosts )
 if [ $value -eq 0 ]
 then
 echo "
