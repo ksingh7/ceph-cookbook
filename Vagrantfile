@@ -4,8 +4,8 @@ VAGRANTFILE_API_VERSION = "2"
 BOX='centos7-standard'
 BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
 
-BOX_OPENSTACK='centos7-openstack'
-BOX_URL_OPENSTACK='https://www.dropbox.com/s/oioyoovr1nzvq3c/centos7-openstack.box?dl=1'
+BOX_OPENSTACK='openstack'
+BOX_URL_OPENSTACK='https://www.dropbox.com/s/azww4ud3ti910os/openstack.box?dl=1'
 
 CLIENT_NODE='ubuntu/trusty64'
 
