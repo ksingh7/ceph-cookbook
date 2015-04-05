@@ -27,6 +27,8 @@ ceph_node3_disk2 = './ceph-node3/ceph-node3_disk2.vdi'
 ceph_node3_disk3 = './ceph-node3/ceph-node3_disk3.vdi'
 ceph_node3_disk4 = './ceph-node3/ceph-node3_disk4.vdi'
 
+rgw_node1= 'rgw-node1'
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ##################################### Configuration for ceph-node1 #####################################################
@@ -172,6 +174,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                         end
                   end
+
+##################################### Configuration for rgw-node1 #####################################################
+
+                 config.vm.define :"rgw-node1" do |rgw|
+                        rgw.vm.box = BOX
+                        rgw.vm.box_url = BOX_URL
+                        rgw.vm.network :private_network, ip: "192.168.1.106"
+                        rgw.vm.hostname = rgw_node1 
+                        rgw.vm.synced_folder ".", "/vagrant", disabled: true
+                        rgw.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        rgw.vm.provision "shell", path: "post-deploy.sh",run: "always"
+                        rgw.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "512"]
+                                v.name = rgw_node1 
+                                v.gui = true
+
+                        end
+                  end
+
 ###############################################################################################################
 
 end
