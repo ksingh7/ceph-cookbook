@@ -25,5 +25,10 @@ systemctl stop ntpdate
 ntpdate 0.centos.pool.ntp.org > /dev/null 2> /dev/null
 systemctl start ntpdate
 systemctl start ntpd
-service ceph restart mon > /dev/null 2> /dev/null
+
+	if [ -e /etc/rc.d/init.d/ceph ]
+	then
+	service ceph restart mon > /dev/null 2> /dev/null
+	fi
+
 fi
