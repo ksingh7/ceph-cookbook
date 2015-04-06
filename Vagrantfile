@@ -13,9 +13,9 @@ os_host= 'os-node1'
 client_host= 'client-node1'
 
 ceph_node1= 'ceph-node1'
-ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi' 
-ceph_node1_disk3 = './ceph-node1/ceph-node1_disk3.vdi' 
-ceph_node1_disk4 = './ceph-node1/ceph-node1_disk4.vdi' 
+ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi'
+ceph_node1_disk3 = './ceph-node1/ceph-node1_disk3.vdi'
+ceph_node1_disk4 = './ceph-node1/ceph-node1_disk4.vdi'
 
 ceph_node2= 'ceph-node2'
 ceph_node2_disk2 = './ceph-node2/ceph-node2_disk2.vdi'
@@ -27,7 +27,8 @@ ceph_node3_disk2 = './ceph-node3/ceph-node3_disk2.vdi'
 ceph_node3_disk3 = './ceph-node3/ceph-node3_disk3.vdi'
 ceph_node3_disk4 = './ceph-node3/ceph-node3_disk4.vdi'
 
-rgw_node1= 'rgw-node1'
+rgw_node1_hostname= 'rgw-node1.cephcookbook.com'
+rgw_node1_machine_name= 'rgw-node1'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -159,17 +160,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 ##################################### Configuration for client node #####################################################
 
                  config.vm.define :"client-node1" do |os|
-                        os.vm.box = CLIENT_NODE 
+                        os.vm.box = CLIENT_NODE
                         #os.vm.box_url = BOX_URL_OPENSTACK
                         os.vm.network :private_network, ip: "192.168.1.110"
-                        os.vm.hostname = client_host 
+                        os.vm.hostname = client_host
                         os.vm.synced_folder ".", "/vagrant", disabled: true
 			os.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 			os.vm.provision "shell", path: "post-deploy.sh"
                         os.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "512"]
-                                v.name = client_host 
+                                v.name = client_host
                                 v.gui = true
 
                         end
@@ -181,14 +182,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         rgw.vm.box = BOX
                         rgw.vm.box_url = BOX_URL
                         rgw.vm.network :private_network, ip: "192.168.1.106"
-                        rgw.vm.hostname = rgw_node1 
+                        rgw.vm.hostname = rgw_node1_hostname
                         rgw.vm.synced_folder ".", "/vagrant", disabled: true
                         rgw.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
                         rgw.vm.provision "shell", path: "post-deploy.sh",run: "always"
                         rgw.vm.provider "virtualbox" do |v|
 
                                 v.customize ["modifyvm", :id, "--memory", "512"]
-                                v.name = rgw_node1 
+                                v.name = rgw_node1_machine_name
                                 v.gui = true
 
                         end
