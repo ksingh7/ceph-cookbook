@@ -9,9 +9,6 @@ BOX_URL_OPENSTACK='https://www.dropbox.com/s/azww4ud3ti910os/openstack.box?dl=1'
 
 CLIENT_NODE='ubuntu/trusty64'
 
-os_host= 'os-node1'
-client_host= 'client-node1'
-
 ceph_node1= 'ceph-node1'
 ceph_node1_disk2 = './ceph-node1/ceph-node1_disk2.vdi'
 ceph_node1_disk3 = './ceph-node1/ceph-node1_disk3.vdi'
@@ -27,8 +24,17 @@ ceph_node3_disk2 = './ceph-node3/ceph-node3_disk2.vdi'
 ceph_node3_disk3 = './ceph-node3/ceph-node3_disk3.vdi'
 ceph_node3_disk4 = './ceph-node3/ceph-node3_disk4.vdi'
 
+os_host= 'os-node1'
+client_host= 'client-node1'
+
 rgw_node1_hostname= 'rgw-node1.cephcookbook.com'
 rgw_node1_machine_name= 'rgw-node1'
+
+us_east_rgw_hostname= 'us-east-1.cephcookbook.com'
+us_east_rgw_machine_name= 'us-east-1'
+
+us_west_rgw_hostname= 'us-west-1.cephcookbook.com'
+us_west_rgw_machine_name= 'us-west-1'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -195,6 +201,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         end
                   end
 
-###############################################################################################################
+##################################### Configuration for us-east-1 Rados Gateway Node #######################################
 
+                 config.vm.define :"us-east-1" do |use1|
+                        use1.vm.box = BOX
+                        use1.vm.box_url = BOX_URL
+                        use1.vm.network :private_network, ip: "192.168.1.107"
+                        use1.vm.hostname = us_east_rgw_hostname 
+                        use1.vm.synced_folder ".", "/vagrant", disabled: true
+                        use1.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        use1.vm.provision "shell", path: "post-deploy.sh",run: "always"
+                        use1.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "512"]
+                                v.name = us_east_rgw_machine_name 
+                                v.gui = true
+
+                        end
+                  end
+
+##################################### Configuration for us-west-1 Rados Gateway Node #######################################
+
+                 config.vm.define :"us-west-1" do |usw1|
+                        usw1.vm.box = BOX
+                        usw1.vm.box_url = BOX_URL
+                        usw1.vm.network :private_network, ip: "192.168.1.108"
+                        usw1.vm.hostname = us_west_rgw_hostname
+                        usw1.vm.synced_folder ".", "/vagrant", disabled: true
+                        usw1.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        usw1.vm.provision "shell", path: "post-deploy.sh",run: "always"
+                        usw1.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "512"]
+                                v.name = us_west_rgw_machine_name
+                                v.gui = true
+
+                        end
+                  end
+
+###############################################################################################################
 end
