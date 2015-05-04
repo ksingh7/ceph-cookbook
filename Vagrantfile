@@ -36,6 +36,9 @@ us_east_rgw_machine_name= 'us-east-1'
 us_west_rgw_hostname= 'us-west-1.cephcookbook.com'
 us_west_rgw_machine_name= 'us-west-1'
 
+oc_hostname= 'owncloud.cephcookbook.com'
+oc_name= 'owncloud'
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ##################################### Configuration for ceph-node1 #####################################################
@@ -239,5 +242,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         end
                   end
 
+##################################### Configuration for owncloud Node #######################################
+
+                 config.vm.define :"owncloud" do |oc|
+                        oc.vm.box = BOX
+                        oc.vm.box_url = BOX_URL
+                        oc.vm.network :private_network, ip: "192.168.1.120"
+                        oc.vm.hostname = oc_hostname
+                        oc.vm.synced_folder ".", "/vagrant", disabled: true
+                        oc.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        oc.vm.provision "shell", path: "post-deploy.sh",run: "always"
+                        oc.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "512"]
+                                v.name = oc_name
+                                v.gui = true
+
+                        end
+                  end
 ###############################################################################################################
 end
