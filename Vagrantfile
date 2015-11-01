@@ -24,6 +24,11 @@ ceph_node3_disk2 = './ceph-node3/ceph-node3_disk2.vdi'
 ceph_node3_disk3 = './ceph-node3/ceph-node3_disk3.vdi'
 ceph_node3_disk4 = './ceph-node3/ceph-node3_disk4.vdi'
 
+ceph_node4= 'ceph-node4'
+ceph_node4_disk2 = './ceph-node4/ceph-node4_disk2.vdi'
+ceph_node4_disk3 = './ceph-node4/ceph-node4_disk3.vdi'
+ceph_node4_disk4 = './ceph-node4/ceph-node4_disk4.vdi'
+
 os_host= 'os-node1'
 client_host= 'client-node1'
 
@@ -53,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node1.vm.provision "shell", path: "post-deploy.sh" ,run: "always"
                         node1.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "750"]
+                                v.customize ["modifyvm", :id, "--memory", "1300"]
                                 v.name = ceph_node1
 				v.gui = true
 
@@ -89,7 +94,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node2.vm.provision "shell", path: "post-deploy.sh",run: "always"
                         node2.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "750"]
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
                                 v.name = ceph_node2
 				v.gui = true
 
@@ -124,7 +129,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         node3.vm.provision "shell", path: "post-deploy.sh",run: "always"
                         node3.vm.provider "virtualbox" do |v|
 
-                                v.customize ["modifyvm", :id, "--memory", "750"]
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
                                 v.name = ceph_node3
                                 v.gui = true
 
@@ -141,6 +146,41 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                 unless File.exist?(ceph_node3_disk4)
                                 v.customize ['createhd', '--filename', ceph_node3_disk4,'--size', 1 * 20480]
                                 v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', ceph_node3_disk4]
+                                end
+
+                        end
+
+                end
+
+##################################### Configuration for ceph-node4 #####################################################
+
+                config.vm.define :"ceph-node4" do |node4|
+                        node4.vm.box = BOX
+                        node4.vm.box_url = BOX_URL
+                        node4.vm.network :private_network, ip: "192.168.1.104"
+                        node4.vm.hostname = ceph_node4
+                        node4.vm.synced_folder ".", "/vagrant", disabled: true
+                        node4.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node4.vm.provision "shell", path: "post-deploy.sh",run: "always"
+                        node4.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "750"]
+                                v.name = ceph_node4
+                                v.gui = true
+
+                                unless File.exist?(ceph_node4_disk2)
+                                v.customize ['createhd', '--filename', ceph_node4_disk2,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', ceph_node4_disk2]
+                                end
+
+                                unless File.exist?(ceph_node4_disk3)
+                                v.customize ['createhd', '--filename', ceph_node4_disk3,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', ceph_node4_disk3]
+                                end
+
+                                unless File.exist?(ceph_node4_disk4)
+                                v.customize ['createhd', '--filename', ceph_node4_disk4,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', ceph_node4_disk4]
                                 end
 
                         end
