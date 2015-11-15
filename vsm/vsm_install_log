@@ -7841,16 +7841,16 @@ Redirecting to /bin/systemctl restart  sshd.service
 ++ pwd
 + TOPDIR=/usr/local/bin
 ++ mktemp
-+ TEMP=/tmp/tmp.WinqQN5nbG
-+ rm -rfv /tmp/tmp.WinqQN5nbG
-+ mkdir -p /tmp/tmp.WinqQN5nbG
++ TEMP=/tmp/tmp.7tpNNVTofv
++ rm -rfv /tmp/tmp.7tpNNVTofv
++ mkdir -p /tmp/tmp.7tpNNVTofv
 + '[' 0 -gt 0 ']'
 + source /usr/local/bin/tools/lib/services
 + source /usr/local/bin/tools/lib/mysql
-++ ls /usr/local/bin/tools/lib/
 ++ grep -v services
 ++ grep -v manifest
 ++ grep -v check
+++ ls /usr/local/bin/tools/lib/
 + for n in '`ls $TOPDIR/tools/lib/ | grep -v services | grep -v manifest | grep -v check`'
 + source /usr/local/bin/tools/lib/createrepo
 + for n in '`ls $TOPDIR/tools/lib/ | grep -v services | grep -v manifest | grep -v check`'
@@ -7873,34 +7873,13 @@ Redirecting to /bin/systemctl restart  sshd.service
 + source /usr/local/bin/tools/lib/vsm
 + for n in '`ls $TOPDIR/tools/lib/ | grep -v services | grep -v manifest | grep -v check`'
 + source /usr/local/bin/tools/lib/vsmdash
-+ rm -rf /etc/vsm/api-paste.ini /etc/vsm/cache-tier.conf /etc/vsm/ceph.conf.template /etc/vsm/logging.conf /etc/vsm/policy.json /etc/vsm/prepools /etc/vsm/rootwrap.conf /etc/vsm/rootwrap.d /etc/vsm/vsm.conf
++ rm -rf /etc/vsm/api-paste.ini /etc/vsm/cache-tier.conf /etc/vsm/ceph.conf.template /etc/vsm/ceph.conf.template.rpmsave /etc/vsm/cluster.manifest /etc/vsm/logging.conf /etc/vsm/logging_sample.conf /etc/vsm/policy.json /etc/vsm/prepools /etc/vsm/rootwrap.conf /etc/vsm/rootwrap.d /etc/vsm/server.manifest /etc/vsm/vsm.conf /etc/vsm/vsm.conf.sample
 + cp -rf /usr/local/bin/tools/etc/vsm/api-paste.ini /usr/local/bin/tools/etc/vsm/cache-tier.conf /usr/local/bin/tools/etc/vsm/ceph.conf.template /usr/local/bin/tools/etc/vsm/cluster.manifest /usr/local/bin/tools/etc/vsm/logging_sample.conf /usr/local/bin/tools/etc/vsm/policy.json /usr/local/bin/tools/etc/vsm/prepools /usr/local/bin/tools/etc/vsm/rootwrap.conf /usr/local/bin/tools/etc/vsm/rootwrap.d /usr/local/bin/tools/etc/vsm/server.manifest /usr/local/bin/tools/etc/vsm/vsm.conf.sample /etc/vsm/
 + mv /etc/vsm/vsm.conf.sample /etc/vsm/vsm.conf
 + /usr/bin/key
-spawn ssh-keygen
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa.
-Your public key has been saved in /root/.ssh/id_rsa.pub.
-The key fingerprint is:
-25:9b:fd:46:e6:8e:92:2e:b0:6b:ea:55:ed:16:5c:49 root@vsm-node3
-The key's randomart image is:
-+--[ RSA 2048]----+
-|          E      |
-|         . .     |
-|        . +      |
-|       o B       |
-|      . S . o    |
-|    .. . . =     |
-|    .o  o.  +    |
-|   .o ..o  +     |
-| .oo.. o... .    |
-+-----------------+
 + server_manifest
 No handlers could be found for logger "vsm.utils"
-{'cluster_ip': '192.168.123.100', 'zone': 'zone_one', 'auth_key': 'c7cdb4c2c7694045a3cc82641579509c-df41c6e9bc524c90bda9db50e0a4888e', 'ip': '10.0.2.15,192.168.123.103', 'id_rsa_pub': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGrWuwENoXoXV9GgFcbfDpJEMqqnwfuFIgTBjL+t5/FBTl7QwipK7louy0NYhwi+lJ/oNso6+G9cRcWdyKrx/e+OQsKXzg57Qj+NpfUrta5HrrHh9RyL3QB/CC0YbbMVnlroPMuaSR9vWVfHjNvlozI6CJwF4afdIKnKUD0623d1m1OvJ6P/u+JGrpA8RsIgxVIW8uMykP/s6VxxY9mA+5oaQDKObCkUqZh7GuHOoItldgHs8tyM+K//5pd8v7esOJLvMl9zTQuzGsq+bg1TMX/A6h/wx/M5FQNOTcIIXy3aZ52BlRi9MBi4vJ9bC0qwceNT9Tfw1YRQF+1C9MfezV root@vsm-node3\n', 'host': 'vsm-node3', 'vsm_controller_ip': '192.168.123.100', 'role': 'monitor,storage,', 'controller_ip': '192.168.123.100'}
+{'cluster_ip': '192.168.123.100', 'zone': 'zone_one', 'auth_key': '3651aba9b046409c8184b99e42c62eac-5fe14557293b44399b1474cc43166238', 'ip': '10.0.2.15,192.168.123.103', 'id_rsa_pub': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGrWuwENoXoXV9GgFcbfDpJEMqqnwfuFIgTBjL+t5/FBTl7QwipK7louy0NYhwi+lJ/oNso6+G9cRcWdyKrx/e+OQsKXzg57Qj+NpfUrta5HrrHh9RyL3QB/CC0YbbMVnlroPMuaSR9vWVfHjNvlozI6CJwF4afdIKnKUD0623d1m1OvJ6P/u+JGrpA8RsIgxVIW8uMykP/s6VxxY9mA+5oaQDKObCkUqZh7GuHOoItldgHs8tyM+K//5pd8v7esOJLvMl9zTQuzGsq+bg1TMX/A6h/wx/M5FQNOTcIIXy3aZ52BlRi9MBi4vJ9bC0qwceNT9Tfw1YRQF+1C9MfezV root@vsm-node3\n', 'host': 'vsm-node3', 'vsm_controller_ip': '192.168.123.100', 'role': 'monitor,storage,', 'controller_ip': '192.168.123.100'}
 {
   "api-paste.ini": "#############\n# OpenStack #\n#############\n\n[composite:vsmapi_storage]\nuse = call:vsm.api:root_app_factory\n/: apiversions\n/v1: openstack_storage_api_v1\n\n[composite:openstack_storage_api_v1]\nuse = call:vsm.api.middleware.auth:pipeline_factory\nnoauth = faultwrap sizelimit noauth apiv1\nkeystone = faultwrap sizelimit authtoken keystonecontext apiv1\nkeystone_nolimit = faultwrap sizelimit authtoken keystonecontext apiv1\n\n[filter:faultwrap]\npaste.filter_factory = vsm.api.middleware.fault:FaultWrapper.factory\n\n[filter:noauth]\npaste.filter_factory = vsm.api.middleware.auth:NoAuthMiddleware.factory\n\n[filter:sizelimit]\npaste.filter_factory = vsm.api.middleware.sizelimit:RequestBodySizeLimiter.factory\n\n[app:apiv1]\npaste.app_factory = vsm.api.v1.router:APIRouter.factory\n\n[pipeline:apiversions]\npipeline = faultwrap osstorageversionapp\n\n[app:osstorageversionapp]\npaste.app_factory = vsm.api.versions:Versions.factory\n\n\n##########\n# Shared #\n##########\n\n[filter:keystonecontext]\npaste.filter_factory = vsm.api.middleware.auth:VsmKeystoneContext.factory\n\n[filter:authtoken]\npaste.filter_factory = keystoneclient.middleware.auth_token:filter_factory\n",
   "cache_tier_defaults": [
@@ -8053,7 +8032,7 @@ No handlers could be found for logger "vsm.utils"
       "storage_class": "ssd"
     }
   ],
-  "vsm.conf": "[DEFAULT]\nrabbit_password = a1df2a0e5ca7d7eea561\nrabbit_host = 192.168.123.100\nrabbit_port=5673\nstate_path = /opt/stack/data/vsm\nosapi_volume_extension = vsm.api.openstack.volume.contrib.standard_extensions\nrootwrap_config = /etc/vsm/rootwrap.conf\napi_paste_config = /etc/vsm/api-paste.ini\nsql_connection = mysql://vsm:cddb5673624eece613a2@192.168.123.100/vsm?charset=utf8\nverbose = True\nauth_strategy = keystone\n\n[keystone_authtoken]\nauth_uri = http://192.168.123.100:5000/v2.0\nidentity_uri = http://192.168.123.100:35357\nadmin_tenant_name = service\nadmin_user = vsm\nadmin_password = df6c0b3192d0e82c8c63",
+  "vsm.conf": "[DEFAULT]\nrabbit_password = 071ad8ac76def0149bff\nrabbit_host = 192.168.123.100\nrabbit_port=5673\nstate_path = /opt/stack/data/vsm\nosapi_volume_extension = vsm.api.openstack.volume.contrib.standard_extensions\nrootwrap_config = /etc/vsm/rootwrap.conf\napi_paste_config = /etc/vsm/api-paste.ini\nsql_connection = mysql://vsm:cddb5673624eece613a2@192.168.123.100/vsm?charset=utf8\nverbose = True\nauth_strategy = keystone\n\n[keystone_authtoken]\nauth_uri = http://192.168.123.100:5000/v2.0\nidentity_uri = http://192.168.123.100:35357\nadmin_tenant_name = service\nadmin_user = vsm\nadmin_password = 22adbefcc0a7c06f1917",
   "zone": [
     "zone_one"
   ]
@@ -8075,11 +8054,138 @@ sec 7200_rpm_sata has lines: ['/dev/sdb1 /dev/sdb2', '/dev/sdc1 /dev/sdc2', '/de
 [7200_rpm_sata]
 sec ssd has lines: []
 ['/dev/sdb1', '/dev/sdc1', '/dev/sdd1']
----------------ERROR----------------
-Errors below is caused by your manifest file
-Please check your manifest file!
-------------------------------------
-Can not find the journal devices in system path.!
-------------------------------------
+['/dev/sdb2', '/dev/sdc2', '/dev/sdd2']
+['10.0.2.15', '192.168.123.103']
+[u'192.168.123.0/24', u'192.168.123.0/24', u'192.168.123.0/24']
+['10.0.2.15', '192.168.123.103']
+[u'192.168.123.0/24', u'192.168.123.0/24', u'192.168.123.0/24']
+Warning: There are some networks be the same.
+Controller ip lan = [u'192.168.123.0/24', u'192.168.123.0/24', u'192.168.123.0/24']
+[auth_key]
+--------------------------------------
+Check Success ~~
+{
+  "auth_key": "3651aba9b046409c8184b99e42c62eac-5fe14557293b44399b1474cc43166238",
+  "cluster_ip": "192.168.123.100",
+  "controller_ip": "192.168.123.100",
+  "host": "vsm-node3",
+  "id_rsa_pub": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGrWuwENoXoXV9GgFcbfDpJEMqqnwfuFIgTBjL+t5/FBTl7QwipK7louy0NYhwi+lJ/oNso6+G9cRcWdyKrx/e+OQsKXzg57Qj+NpfUrta5HrrHh9RyL3QB/CC0YbbMVnlroPMuaSR9vWVfHjNvlozI6CJwF4afdIKnKUD0623d1m1OvJ6P/u+JGrpA8RsIgxVIW8uMykP/s6VxxY9mA+5oaQDKObCkUqZh7GuHOoItldgHs8tyM+K//5pd8v7esOJLvMl9zTQuzGsq+bg1TMX/A6h/wx/M5FQNOTcIIXy3aZ52BlRi9MBi4vJ9bC0qwceNT9Tfw1YRQF+1C9MfezV root@vsm-node3\n",
+  "ip": "10.0.2.15,192.168.123.103",
+  "role": "monitor,storage,",
+  "vsm_controller_ip": "192.168.123.100",
+  "zone": "zone_one"
+}
+Check Success ~~
+--------------------------------------
++ sed -i 's/\(^Defaults.*requiretty.*$\)/#\1/' /etc/sudoers
++ cp -rf /usr/local/bin/tools/etc/sudoers.d/vsm /etc/sudoers.d/
++ service vsm-agent restart
+Restarting vsm-agent (via systemctl):                      [  OK  ]
++ chkconfig vsm-agent on
++ sed -i /exit/d /etc/rc.local
++ echo 'service vsm-agent restart'
++ echo 'service vsm-physical restart'
++ echo 'exit 0'
++ chmod +x /etc/vsm/prepools/main
++ echo ...
+...
++ sleep 5
++ service vsm-physical restart
+Restarting vsm-physical (via systemctl):                   [  OK  ]
++ chkconfig vsm-physical on
++ echo 'The End!'
+The End!
++ set +o xtrace
 Connection to 192.168.123.103 closed.
++ install_setup_diamond 192.168.123.103
++ kill_diamond 192.168.123.103
++ cat
++ scp kill_diamond.sh cephuser@192.168.123.103:/tmp
+Warning: Permanently added '192.168.123.103' (ECDSA) to the list of known hosts.
+kill_diamond.sh                                                                                                             100%  154     0.2KB/s   00:00
++ ssh -t cephuser@192.168.123.103 'sudo -E chmod 755 /tmp/kill_diamond.sh;' 'cd /tmp;' './kill_diamond.sh;' 'sudo -E rm -rf kill_diamond'
+Warning: Permanently added '192.168.123.103' (ECDSA) to the list of known hosts.
+Connection to 192.168.123.103 closed.
++ ssh -t cephuser@192.168.123.103 'sudo -E yum install -y diamond'
+Warning: Permanently added '192.168.123.103' (ECDSA) to the list of known hosts.
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package diamond.noarch 0:4-0 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==============================================================================================================================================================
+ Package                               Arch                                 Version                            Repository                                Size
+==============================================================================================================================================================
+Installing:
+ diamond                               noarch                               4-0                                vsmdeprepo                               403 k
+
+Transaction Summary
+==============================================================================================================================================================
+Install  1 Package
+
+Total download size: 403 k
+Installed size: 1.5 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : diamond-4-0.noarch                                                                                                                         1/1
+Adding and activating diamond service
+  Verifying  : diamond-4-0.noarch                                                                                                                         1/1
+
+Installed:
+  diamond.noarch 0:4-0
+
+Complete!
+Connection to 192.168.123.103 closed.
++ DEPLOYRC_FILE=/etc/vsmdeploy/deployrc
++ [[ 1 -eq 0 ]]
++ source /etc/vsmdeploy/deployrc
+++ STACK_USER=stack
+++ REPO_HOST=192.168.123.100
+++ VSM_HTTPS_PASSWORD=46ce332dce9f620d8296
+++ MYSQL_ROOT_PASSWORD=35f64d89f3b0ae10582f
+++ MYSQL_HOST=192.168.123.100
+++ RABBITMQ_HOST=192.168.123.100
+++ RABBITMQ_USER=guest
+++ RABBITMQ_PASSWORD=071ad8ac76def0149bff
+++ RABBITMQ_NODENAME=deploy_rabbitmq
+++ RABBITMQ_PORT=5673
+++ MYSQL_KEYSTONE_USER=keystone
+++ MYSQL_KEYSTONE_PASSWORD=2ad8180cc297b78090d3
+++ KEYSTONE_HOST=192.168.123.100
+++ ADMIN_PASSWORD=57e6f95e1d430fb4f913
+++ ADMIN_TOKEN=16537728cbbffa891911
+++ AGENT_PASSWORD=98cd2c53f4e7e0303244
+++ VSM_HOST=192.168.123.100
+++ MYSQL_VSM_USER=vsm
+++ MYSQL_VSM_PASSWORD=cddb5673624eece613a2
+++ KEYSTONE_VSM_SERVICE_PASSWORD=22adbefcc0a7c06f1917
+++ VSM_RUNNING_SERVICE=vsm-api,vsm-conductor,vsm-scheduler
+++ DASHBOARD_HOST=192.168.123.100
+++ MYSQL_DASHBOARD_USER=dashboard
+++ MYSQL_DASHBOARD_PASSWORD=c76712848c60ee34e717
+++ cut '-d ' -f2
+++ cut -d. -f1,2
+++ python -V
++ PY_VER=2.7
++ echo 'Python version: 2.7'
+Python version: 2.7
++ VSMMYSQL_FILE_PATH=/usr/lib/python2.7/site-packages/vsm/diamond/handlers/vsmmysql.py
++ HANDLER_PATH=/usr/lib/python2.7/site-packages/diamond/handler
++ DIAMOND_CONFIG_PATH=/etc/diamond
++ ssh -t cephuser@192.168.123.103 'sudo -E cp /etc/diamond/diamond.conf.example /etc/diamond/diamond.conf;' 'sudo -E cp /usr/lib/python2.7/site-packages/vsm/diamond/handlers/vsmmysql.py /usr/lib/python2.7/site-packages/diamond/handler;' 'sudo -E sed -i "s/MySQLHandler/VSMMySQLHandler/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/^handlers = *.*ArchiveHandler$/handlers =  diamond.handler.vsmmysql.VSMMySQLHandler/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/host = graphite/host = 127.0.0.1/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/^hostname*=*.*/hostname    = 192.168.123.100/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/username    = root/username    = vsm/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/password*=*.*/password    = cddb5673624eece613a2/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/database    = diamond/database    = vsm/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# INT UNSIGNED NOT NULL/a\# VARCHAR(255) NOT NULL" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# INT UNSIGNED NOT NULL/acol_instance = instance" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# INT UNSIGNED NOT NULL/a\# VARCHAR(255) NOT NULL" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# INT UNSIGNED NOT NULL/acol_hostname    = hostname" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# And any other config settings from GraphiteHandler are valid here/i\[\[SignalfxHandler\]\]" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\# And any other config settings from GraphiteHandler are valid here/iauth_token = abcdefghijklmnopqrstuvwxyz" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\# interval = 300/interval = 20/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/enabled = True/#enabled = True/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\[\[DiskSpaceCollector\]\]/\#\[\[DiskSpaceCollector\]\]/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\[\[DiskUsageCollector\]\]/\#\[\[DiskUsageCollector\]\]/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\[\[LoadAverageCollector\]\]/\#\[\[LoadAverageCollector\]\]/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\[\[MemoryCollector\]\]/\#\[\[MemoryCollector\]\]/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "s/\[\[VMStatCollector\]\]/\#\[\[VMStatCollector\]\]/g" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\[\[CPUCollector\]\]/i\[\[CephCollector\]\]" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\[\[CPUCollector\]\]/ienabled = True" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\[\[CPUCollector\]\]/i\[\[NetworkCollector\]\]" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\[\[CPUCollector\]\]/ienabled = True" /etc/diamond/diamond.conf;' 'sudo -E sed -i "/\[\[CPUCollector\]\]/aenabled = True" /etc/diamond/diamond.conf;' 'sudo -E diamond'
+Warning: Permanently added '192.168.123.103' (ECDSA) to the list of known hosts.
+Connection to 192.168.123.103 closed.
++ ssh -t cephuser@192.168.123.103 'cd /etc/yum.repos.d; if [[ -d /tmp/backup ]]; then sudo -E mv /tmp/backup/* .; sudo -E rm -rf /tmp/backup; fi'
+Warning: Permanently added '192.168.123.103' (ECDSA) to the list of known hosts.
+Connection to 192.168.123.103 closed.
++ echo Finished.
+Finished.
++ set +o xtrace
 [cephuser@vsm-controller 2.0.0-216]$
