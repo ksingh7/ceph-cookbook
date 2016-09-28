@@ -20,17 +20,19 @@ echo "
 ######################################################
 " >> /etc/hosts
 fi
+
 if [ -e /etc/redhat-release ]
 then
-systemctl stop ntpd
-systemctl stop ntpdate
-ntpdate 0.centos.pool.ntp.org > /dev/null 2> /dev/null
-systemctl start ntpdate
-systemctl start ntpd
+    yum install -y ntp ntpdate
+    systemctl stop ntpd
+    systemctl stop ntpdate
+    ntpdate 0.centos.pool.ntp.org > /dev/null 2> /dev/null
+    systemctl start ntpdate
+    systemctl start ntpd
 
-	if [ -e /etc/rc.d/init.d/ceph ]
-	then
-	service ceph restart mon > /dev/null 2> /dev/null
-	fi
+if [ -e /etc/rc.d/init.d/ceph ]
+then
+    service ceph restart mon > /dev/null 2> /dev/null
+fi
 
 fi
