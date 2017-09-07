@@ -99,7 +99,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
                 end
 
-
 ##################################### Configuration for ceph-node2 #####################################################
 
  		config.vm.define :"ceph-node2" do |node2|
